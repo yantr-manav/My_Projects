@@ -3,7 +3,7 @@ import streamlit as st
 # Page configuration
 st.set_page_config(page_title="Markdown Generator", page_icon=":guardsman:", layout="wide")
 st.title("Markdown Generator")
-st.write("This app generates a Markdown file with the specified content. You can add text, images, tables, code snippets, and more. Once you're done, you can download the generated Markdown file.")
+st.markdown("This app generates a Markdown file with the specified content. You can add text, images, tables, code snippets, and more. Once you're done, you can download the generated Markdown file.")
 
 st.write("## Instructions")
 st.write("""
@@ -14,6 +14,8 @@ st.write("""
 """)
 st.divider()
 
+
+
 # Columns layout
 left,right = st.columns([2,1])
 
@@ -22,13 +24,14 @@ if "markdown_content" not in st.session_state:
     st.session_state.markdown_content = ""
 
 with right:
+    pass
+
+with st.sidebar:
     option = st.selectbox("Choose what to add in the Markdown file", 
                           options=["Title", "Text", "Image", "Table", "Code", "List", "Link", "Quote", "Horizontal Line", 
                                    "Checkbox", "Button", "Select Box", "Radio Button", "Date Input", "Time Input", 
                                    "File Uploader", "Progress Bar", "Spinner", "Expander", "Sidebar", "Markdown"],
                           label_visibility="collapsed")
-
-with st.sidebar:
     
     content = ""
     if option == "Title":
@@ -140,3 +143,4 @@ with left:
         st.write("Markdown content cleared.")
     else:
         st.write("Click the button to clear the Markdown content.")
+        
