@@ -12,9 +12,10 @@ st.write("""
 3. Click the 'Add to Markdown' button to add the content to the Markdown file.
 4. Click the 'Download Markdown' button to download the generated Markdown file.
 """)
+st.divider()
 
 # Columns layout
-left, center, right = st.columns(3)
+left,right = st.columns([2,1])
 
 # Initialize markdown content
 if "markdown_content" not in st.session_state:
@@ -27,7 +28,8 @@ with right:
                                    "File Uploader", "Progress Bar", "Spinner", "Expander", "Sidebar", "Markdown"],
                           label_visibility="collapsed")
 
-with left:
+with st.sidebar:
+    
     content = ""
     if option == "Title":
         title = st.text_input("Enter the title", label_visibility="collapsed")
@@ -123,7 +125,7 @@ with left:
         st.session_state.markdown_content += content
 
 # Center column for preview and downloads
-with center:
+with left:
     st.write("## Markdown Preview")
     st.markdown(st.session_state.markdown_content)
 
