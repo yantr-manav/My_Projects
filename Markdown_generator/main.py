@@ -58,8 +58,12 @@ with st.sidebar:
         code = st.text_area("Enter the code", label_visibility="collapsed")
         language = st.selectbox("Select the programming language", options=["python", "javascript", "html", "css"], label_visibility="collapsed")
         content = f"```{language}\n{code}\n```\n\n"
+        
+        # List ka output change kr .. not that good
+        
     elif option == "List":
         list_items = st.text_area("Enter the list items (comma-separated)", label_visibility="collapsed")
+        
         items = list_items.split(",")
         content = "- " + "\n- ".join(items) + "\n\n"
     elif option == "Link":
@@ -67,8 +71,8 @@ with st.sidebar:
         link_url = st.text_input("Enter the link URL", label_visibility="collapsed")
         content = f"[{link_text}]({link_url})\n\n"
     elif option == "Quote":
-        quote_text = st.text_area("Enter the quote text", label_visibility="collapsed")
-        quote_author = st.text_input("Enter the quote author", label_visibility="collapsed")
+        quote_text = st.text_area("Enter the quote text", label_visibility="collapsed", placeholder="Quote text")
+        quote_author = st.text_input("Enter the quote author", label_visibility="collapsed",placeholder="Quote author")
         content = f"> {quote_text}\n> \n> - {quote_author}\n\n"
     elif option == "Horizontal Line":
         content = "---\n\n"
