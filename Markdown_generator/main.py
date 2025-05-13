@@ -19,10 +19,6 @@ st.divider()
 # Columns layout
 left,right = st.columns([2,1])
 
-# Initialize markdown content
-if "markdown_content" not in st.session_state:
-    st.session_state.markdown_content = ""
-
 with right:
     pass
 
@@ -131,12 +127,13 @@ with st.sidebar:
     if st.button("Add to Markdown"):
         st.session_state.markdown_content += content
 
+
+# Initialize markdown content
+if "markdown_content" not in st.session_state:
+    st.session_state.markdown_content = ""
 # Center column for preview and downloads
 with left:
-    st.write("## Markdown Preview")
-    st.markdown(st.session_state.markdown_content)
-
-    st.download_button("Download Markdown", st.session_state.markdown_content, "markdown.md", "text/markdown")
+   
 
     st.write("## Markdown Content")
     st.text_area("Markdown Content", st.session_state.markdown_content, height=300)
@@ -147,4 +144,9 @@ with left:
         st.write("Markdown content cleared.")
     else:
         st.write("Click the button to clear the Markdown content.")
+    
+    st.write("## Markdown Preview")
+    st.markdown(st.session_state.markdown_content )
+
+    st.download_button("Download Markdown", st.session_state.markdown_content, "markdown.md", "text/markdown")
         
