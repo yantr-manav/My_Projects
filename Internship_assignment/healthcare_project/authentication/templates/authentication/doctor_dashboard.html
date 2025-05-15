@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Doctor Dashboard - Healthcare System{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-success text-white">
+        <h2 class="mb-0">Doctor Dashboard</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                {% if user.profile.profile_picture %}
+                    <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle mb-3" style="max-width: 200px; max-height: 200px;">
+                {% else %}
+                    <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 200px; height: 200px; margin: 0 auto;">
+                        <h1>{{ user.first_name|first }}{{ user.last_name|first }}</h1>
+                    </div>
+                {% endif %}
+                <h3>Dr. {{ user.first_name }} {{ user.last_name }}</h3>
+                <p class="text-muted">Doctor</p>
+            </div>
+            
+            <div class="col-md-8">
+                <h4>User Information</h4>
+                <table class="table">
+                    <tr>
+                        <th>Username:</th>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address:</th>
+                        <td>{{ user.profile.address_line1 }}</td>
+                    </tr>
+                    <tr>
+                        <th>City:</th>
+                        <td>{{ user.profile.city }}</td>
+                    </tr>
+                    <tr>
+                        <th>State:</th>
+                        <td>{{ user.profile.state }}</td>
+                    </tr>
+                    <tr>
+                        <th>Pincode:</th>
+                        <td>{{ user.profile.pincode }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
