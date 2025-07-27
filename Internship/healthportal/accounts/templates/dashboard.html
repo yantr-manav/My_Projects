@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-10">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Welcome, {{ user.first_name }}</h2>
+    <ul class="space-y-2">
+      <li><strong>Full Name:</strong> {{ user.first_name }} {{ user.last_name }}</li>
+      <li><strong>Username:</strong> {{ user.username }}</li>
+      <li><strong>Email:</strong> {{ user.email }}</li>
+      <li><strong>User Type:</strong> {{ user.get_user_type_display }}</li>
+      <li><strong>Address:</strong> {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</li>
+    </ul>
+    {% if user.profile_picture %}
+      <img src="{{ user.profile_picture.url }}" alt="Profile Pic" class="mt-4 rounded-full w-32 h-32 object-cover">
+    {% endif %}
+  </div>
+</body>
+</html>
